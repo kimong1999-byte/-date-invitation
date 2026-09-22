@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>我們的約會 · Love Date</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;color:#5b4057}
+body{min-height:100vh;overflow-x:hidden;background:linear-gradient(135deg,#f9e9f5 0%,#eee5fb 48%,#f9e6ee 100%);position:relative}
+body:before,body:after{content:"";position:fixed;inset:auto;pointer-events:none;opacity:.55}
+body:before{width:280px;height:280px;left:-100px;top:-80px;background:radial-gradient(circle,#fff 0 7%,transparent 8% 100%);background-size:42px 42px;filter:blur(.2px)}
+body:after{width:320px;height:320px;right:-120px;bottom:-90px;background:radial-gradient(circle,#e6b8d7 0 6%,transparent 7% 100%);background-size:50px 50px;opacity:.25}
+.petal{position:fixed;font-size:28px;opacity:.35;animation:float 8s ease-in-out infinite;z-index:0}.p1{left:8%;top:18%}.p2{right:10%;top:12%;animation-delay:1s}.p3{left:12%;bottom:14%;animation-delay:2s}.p4{right:8%;bottom:22%;animation-delay:3s}
+@keyframes float{50%{transform:translateY(-15px) rotate(8deg)}}
+.wrap{min-height:100vh;display:grid;place-items:center;padding:28px 16px;position:relative;z-index:1}
+.card{width:min(680px,100%);min-height:590px;background:rgba(255,255,255,.94);border:1px solid rgba(255,255,255,.8);border-radius:34px;box-shadow:0 24px 70px rgba(121,78,119,.18);padding:34px 30px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;width:230px;height:230px;border-radius:50%;background:#f9e5f2;right:-100px;top:-100px}
+.brand{text-align:center;font-size:13px;letter-spacing:.2em;color:#ad7ba7;margin-bottom:22px}
+.step{display:none;flex:1;flex-direction:column;animation:in .35s ease}.step.active{display:flex}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h1{font-size:clamp(29px,6vw,46px);line-height:1.2;text-align:center;margin:28px 0 14px;color:#704b6e}
+.sub{text-align:center;color:#a17d9d;margin:0 auto 30px;line-height:1.8}
+.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:auto;padding-top:20px}
+button{border:0;border-radius:999px;padding:14px 25px;font-size:16px;font-weight:700;cursor:pointer;transition:.22s;box-shadow:0 8px 20px rgba(120,70,120,.12)}
+.primary{background:linear-gradient(135deg,#d88fbe,#b887d5);color:white}.secondary{background:#f5edf6;color:#87627f}
+.primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(120,70,120,.2)}
+#noBtn{position:relative}
+.datebox{max-width:420px;margin:10px auto 0;width:100%}
+input[type=date]{width:100%;padding:16px 18px;border:1px solid #ead8e7;border-radius:18px;background:#fff;color:#684d65;font-size:17px;outline:none;box-shadow:0 8px 24px rgba(100,60,100,.06)}
+.foods{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:500px;width:100%;margin:0 auto}
+.food{padding:18px 12px;border:1px solid #ead8e7;background:#fff;border-radius:20px;color:#6d5269;font-size:16px;box-shadow:none}
+.food.selected{background:#f7e4f2;border-color:#cf8fbe;box-shadow:0 8px 22px rgba(180,110,160,.14);transform:translateY(-2px)}
+.letter{background:linear-gradient(145deg,#fff9fc,#fff);border-radius:24px;padding:25px;line-height:2;font-size:16px;box-shadow:inset 0 0 0 1px #f1e1ed;overflow:auto;max-height:340px}
+.letter .sig{font-weight:800;color:#b66c9f;text-align:right;margin-top:14px}
+.summary{background:#fcf5fa;border-radius:24px;padding:22px;margin-top:8px}.row{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px dashed #ead8e7}.row:last-child{border-bottom:0}.label{color:#aa85a3}.value{font-weight:800;color:#6e4d69;text-align:right}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:#694c66;color:#fff;padding:12px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.3s;z-index:20;font-size:14px}.toast.show{opacity:1;transform:translateX(-50%)}
+.progress{display:flex;justify-content:center;gap:7px;margin-top:auto;padding-top:24px}.dot{width:8px;height:8px;border-radius:50%;background:#e8d6e5}.dot.on{width:24px;background:#c88dbb}
+.small{text-align:center;font-size:12px;color:#b292ad;margin-top:14px}
+@media(max-width:520px){.card{min-height:620px;padding:27px 19px;border-radius:28px}.foods{grid-template-columns:1fr 1fr}h1{margin-top:20px}.letter{font-size:15px;padding:20px}.btns{gap:10px}.btns button{width:100%}}
+</style>
+</head>
+<body>
+<div class="petal p1">🌸</div><div class="petal p2">🌷</div><div class="petal p3">🌸</div><div class="petal p4">🌺</div>
+<main class="wrap"><section class="card">
+<div class="brand">♡ OUR LITTLE DATE ♡</div>
+
+<section class="step active" id="s1">
+  <h1>🌸 要不要跟老公去約會？🌸</h1>
+  <p class="sub">今天不接受拒絕喔。<br>因為老公已經準備好把妳拐出去約會了 ♥</p>
+  <div class="btns" id="btnArea">
+    <button class="primary" id="yesBtn" onclick="go(2)">好哦 ♥ 爱你</button>
+    <button class="secondary" id="noBtn">好吧 👋</button>
+  </div>
+  <div class="small">偷偷提示：第二個按鈕有點害羞，可能會躲起來 ♡</div>
+</section>
+
+<section class="step" id="s2">
+  <h1>📅 約會要哪一天？</h1><p class="sub">選一個我們都能好好享受的日子吧。</p>
+  <div class="datebox"><input id="date" type="date"></div>
+  <div class="btns"><button class="primary" onclick="pickDate()">就這天！❤</button></div>
+</section>
+
+<section class="step" id="s3">
+  <h1>🍽️ 想吃什麼？</h1><p class="sub">今天由女朋友大人決定。<br>可以選一個最想吃的！</p>
+  <div class="foods">
+    <button class="food" onclick="food(this,'火鍋')">🍲 火鍋</button>
+    <button class="food" onclick="food(this,'寿司')">🍣 寿司</button>
+    <button class="food" onclick="food(this,'Pasta')">🍝 Pasta</button>
+    <button class="food" onclick="food(this,'沙拉')">🥗 沙拉</button>
+    <button class="food" onclick="food(this,'烤肉')">🥩 烤肉</button>
+    <button class="food" onclick="food(this,'住家估佬肉')">❤️ 住家估佬肉</button>
+  </div>
+  <div class="btns"><button class="primary" onclick="go(4)">決定啦！♥</button></div>
+</section>
+
+<section class="step" id="s4">
+  <h1>💌 給 洪𠏼洁</h1>
+  <div class="letter">
+    <p>親愛的洪𠏼洁：</p>
+    <p>如果約會是一場小小的旅行，那我想把每一次出發，都留給妳。</p>
+    <p>不需要很遠的地方，也不需要特別盛大的安排。只要是和妳一起，吃一頓喜歡的飯、走一段路、聊一些沒營養的小事，我都覺得那是值得收藏的一天。</p>
+    <p>所以，這一次想認真邀請妳——把一個下午、一個晚上，甚至整整一天，留給我。</p>
+    <p>我負責期待、負責接送、負責想辦法逗妳笑；妳只要負責漂漂亮亮地出現，然後陪我一起把這一天過成我們的小回憶。</p>
+    <p>愛妳不是一句話，是我還想和妳一起吃很多很多頓飯、去很多很多地方的理由。</p>
+    <p>那麼，約會見。♡</p>
+    <div class="sig">永遠想約妳的老公<br>♥</div>
+  </div>
+  <div class="btns"><button class="primary" onclick="go(5)">看看約會安排 ♥</button></div>
+</section>
+
+<section class="step" id="s5">
+  <h1>💞 我們的約會</h1><p class="sub">這就是剛剛一起選好的小約定。</p>
+  <div class="summary">
+    <div class="row"><span class="label">📅 日期</span><span class="value" id="sumDate">尚未選擇</span></div>
+    <div class="row"><span class="label">🍽️ 美食</span><span class="value" id="sumFood">尚未選擇</span></div>
+    <div class="row"><span class="label">💗 對象</span><span class="value">洪𠏼洁</span></div>
+  </div>
+  <div class="btns">
+    <button class="primary" onclick="notify()">📸 發送通知</button>
+    <button class="secondary" onclick="go(1)">再看一次</button>
+  </div>
+  <div class="small">點擊「發送通知」後，可直接截圖這個畫面轉發給男朋友。</div>
+</section>
+
+<div class="progress"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+</section></main><div class="toast" id="toast"></div>
+<script>
+let selectedFood="", selectedDate="", dodges=0;
+const noBtn=document.getElementById('noBtn'), area=document.getElementById('btnArea'), yes=document.getElementById('yesBtn');
+function go(n){document.querySelectorAll('.step').forEach(x=>x.classList.remove('active'));document.getElementById('s'+n).classList.add('active');document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===Math.min(n-1,4)));if(n===5){document.getElementById('sumDate').textContent=selectedDate||'尚未選擇';document.getElementById('sumFood').textContent=selectedFood||'尚未選擇'}}
+function dodge(){dodges++;const maxX=Math.max(10,area.clientWidth-noBtn.offsetWidth-10),maxY=170;noBtn.style.position='absolute';noBtn.style.left=(10+Math.random()*maxX)+'px';noBtn.style.top=(10+Math.random()*maxY)+'px';yes.style.transform=`scale(${1+Math.min(dodges*.08,.65)})`;yes.style.paddingLeft=(25+dodges*2)+'px';yes.style.paddingRight=(25+dodges*2)+'px'}
+noBtn.addEventListener('mouseenter',dodge);noBtn.addEventListener('touchstart',e=>{e.preventDefault();dodge()});noBtn.addEventListener('click',e=>{e.preventDefault();dodge()});
+function pickDate(){const v=document.getElementById('date').value;if(!v){toast('先選一個約會日期嘛 ♥');return}selectedDate=new Date(v+'T00:00:00').toLocaleDateString('zh-Hant',{year:'numeric',month:'long',day:'numeric'});go(3)}
+function food(el,v){document.querySelectorAll('.food').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');selectedFood=v}
+function notify(){toast('通知已準備好！現在截圖這個畫面轉發給男朋友吧 ♥');setTimeout(()=>{try{navigator.share?.({title:'我們的約會',text:`日期：${selectedDate}\n美食：${selectedFood}\n對象：洪𠏼洁`})}catch(e){}},350)}
+function toast(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2600)}
+</script>
+</body></html>
